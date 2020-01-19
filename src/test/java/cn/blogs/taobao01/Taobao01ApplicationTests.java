@@ -52,7 +52,7 @@ class Taobao01ApplicationTests {
 
   @Test
   public void test01() throws IOException {
-    MaterialMkt materialMkt = materialMktMapper.getMatMktById(1);
-    System.out.println(materialMkt);
+    Material material = materialMapper.getMaterialById(1);
+    System.out.println(material);
   }
 }

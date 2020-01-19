@@ -12,6 +12,7 @@ public class Material {
   private Integer myMktId;
   private String xId;
   private Long itemId;
+  private String shortTitle;
   private String title;
   private String itemUrl;
   private String itemDescription;
@@ -34,11 +35,11 @@ public class Material {
 
   public Material(
       Integer id, Integer myCategoryId, Integer mySellerId, Integer myCouponId,
-      Integer myMktId, String xId, Long itemId, String title, String itemUrl,
-      String itemDescription, String provcity, String pictUrl, String smallImages,
-      String whiteImage, String realPostFee, String reservePrice, String zkFinalPrice,
-      Integer volume, Integer categoryId, String categoryName, Integer levelOneCategoryId,
-      String levelOneCategoryName) {
+      Integer myMktId, String xId, Long itemId, String shortTitle, String title,
+      String itemUrl, String itemDescription, String provcity, String pictUrl,
+      String smallImages, String whiteImage, String realPostFee, String reservePrice,
+      String zkFinalPrice, Integer volume, Integer categoryId, String categoryName,
+      Integer levelOneCategoryId, String levelOneCategoryName) {
     this.id = id;
     this.myCategoryId = myCategoryId;
     this.mySellerId = mySellerId;
@@ -46,6 +47,7 @@ public class Material {
     this.myMktId = myMktId;
     this.xId = xId;
     this.itemId = itemId;
+    this.shortTitle = shortTitle;
     this.title = title;
     this.itemUrl = itemUrl;
     this.itemDescription = itemDescription;
@@ -117,6 +119,14 @@ public class Material {
 
   public void setItemId(Long itemId) {
     this.itemId = itemId;
+  }
+
+  public String getShortTitle() {
+    return shortTitle;
+  }
+
+  public void setShortTitle(String shortTitle) {
+    this.shortTitle = shortTitle;
   }
 
   public String getTitle() {
@@ -249,6 +259,7 @@ public class Material {
         ", myMktId=" + myMktId +
         ", xId='" + xId + '\'' +
         ", itemId=" + itemId +
+        ", shortTitle='" + shortTitle + '\'' +
         ", title='" + title + '\'' +
         ", itemUrl='" + itemUrl + '\'' +
         ", itemDescription='" + itemDescription + '\'' +
