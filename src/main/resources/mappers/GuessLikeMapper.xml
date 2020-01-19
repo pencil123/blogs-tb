@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--namespace 名称空间;指定为接口的全类名
+id 唯一标识符；设置接口的方法名
+resultType 返回值类型-->
+
+<mapper namespace="cn.blogs.taobao01.dao.GuessLikeMapper">
+  <select id="getGuessById" resultType="cn.blogs.taobao01.entity.GuessLike">
+    select * from guess_like where id = #{id}
+  </select>
+
+  <!--  public void addEmp(Employee employee);
+        useGeneratedKeys 获取自增主键
+        keyproperty 指定对应主键属性
+    -->
+<!--  <insert id="addEmp" parameterType="com.xuexi.mybatis02.entity.Employee" useGeneratedKeys="true" keyProperty="id">
+    insert into tbl_employee (last_name,gender,email) value (#{last_name},#{gender},#{email})
+  </insert>
+
+  &lt;!&ndash;
+    public void updateEmp(Employee employee);
+    &ndash;&gt;
+  <update id="updateEmp">
+    update tbl_employee
+    set last_name = #{last_name},gender=#{gender},email = #{email}
+    where id = #{id}
+  </update>
+
+  &lt;!&ndash;  public void deleteEmpById(Integer id);&ndash;&gt;
+  <delete id="deleteEmpById">
+    delete from tbl_employee where id = #{id}
+  </delete>-->
+
+</mapper>
