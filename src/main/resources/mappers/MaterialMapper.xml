@@ -8,7 +8,12 @@ id 唯一标识符；设置接口的方法名
 resultType 返回值类型-->
 
 <mapper namespace="cn.blogs.taobao01.dao.MaterialMapper">
-  <select id="getMaterialById" resultType="cn.blogs.taobao01.entity.Material">
+  <resultMap id="getMaterialAndAttri" type="cn.blogs.taobao01.entity.Material">
+    <id column="id" property="id" />
+    <association property="MatCoupon" javaType="cn.blogs.taobao01.entity.MaterialCoupon" select="cn.blogs.taobao01.dao.MaterialCouponMapper.getMatCouponById"
+                 column="my_coupon_id" />
+  </resultMap>
+  <select id="getMaterialById" resultMap="getMaterialAndAttri">
     select * from material_new where id = #{id}
   </select>
 

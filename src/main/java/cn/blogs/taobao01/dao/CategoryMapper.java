@@ -8,7 +8,6 @@ import org.springframework.stereotype.Repository;
  * @author lyzhang
  * @since 2020/1/19 11:17
  */
-//@Mapper
 public interface CategoryMapper {
   public Category getCatById (Integer id);
 }

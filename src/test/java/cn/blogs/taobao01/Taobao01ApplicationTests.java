@@ -15,6 +15,7 @@ import cn.blogs.taobao01.entity.MaterialCoupon;
 import cn.blogs.taobao01.entity.MaterialMkt;
 import cn.blogs.taobao01.entity.MaterialSeller;
 import java.io.IOException;
+import org.apache.ibatis.annotations.Mapper;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.mybatis.spring.annotation.MapperScan;
@@ -34,14 +35,15 @@ import org.springframework.test.context.junit4.SpringRunner;
 class Taobao01ApplicationTests {
 
   @Autowired
-  private CategoryMapper categoryMapper;
+  private MaterialMapper materialMapper;
 
   @Test
   void contextLoads() {}
 
   @Test
   public void test01() throws IOException {
-    Category category =categoryMapper.getCatById(1);
-    System.out.println(category);
+    Material material = materialMapper.getMaterialById(22);
+    System.out.println(material);
+    System.out.println(material.getMatCoupon());
   }
 }
