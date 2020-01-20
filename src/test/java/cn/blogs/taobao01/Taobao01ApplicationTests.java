@@ -19,40 +19,29 @@ import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 
-@SpringBootTest
+
 @RunWith(SpringRunner.class)
-@MapperScan("classpath:mappers/*.xml")
+@SpringBootTest
+@ContextConfiguration(locations = {"classpath:applicationContext.xml"})
+//@EnableAutoConfiguration(exclude={DataSourceAutoConfiguration.class})
+@MapperScan("cn.blogs.taobao01.dao")
 class Taobao01ApplicationTests {
 
   @Autowired
   private CategoryMapper categoryMapper;
 
-  @Autowired
-  private GuessLikeMapper guessLikeMapper;
-
-  @Autowired
-  private KeywordMapper keywordMapper;
-
-  @Autowired
-  private MaterialMapper materialMapper;
-
-  @Autowired
-  private MaterialSellerMapper materialSellerMapper;
-
-  @Autowired
-  private MaterialCouponMapper materialCouponMapper;
-
-  @Autowired
-  private MaterialMktMapper materialMktMapper;
   @Test
   void contextLoads() {}
 
   @Test
   public void test01() throws IOException {
-    Material material = materialMapper.getMaterialById(1);
-    System.out.println(material);
+    Category category =categoryMapper.getCatById(1);
+    System.out.println(category);
   }
 }

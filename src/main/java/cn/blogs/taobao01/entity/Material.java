@@ -6,10 +6,10 @@ package cn.blogs.taobao01.entity;
  */
 public class Material {
   private Integer id;
-  private Integer myCategoryId;
-  private Integer mySellerId;
-  private Integer myCouponId;
-  private Integer myMktId;
+  private Category category;
+  private MaterialCoupon MatCoupon;
+  private MaterialSeller MatSeller;
+  private MaterialMkt MatMkt;
   private String xId;
   private Long itemId;
   private String shortTitle;
@@ -30,21 +30,21 @@ public class Material {
   private String levelOneCategoryName;
 
   public Material() {
-    super();
   }
 
   public Material(
-      Integer id, Integer myCategoryId, Integer mySellerId, Integer myCouponId,
-      Integer myMktId, String xId, Long itemId, String shortTitle, String title,
-      String itemUrl, String itemDescription, String provcity, String pictUrl,
-      String smallImages, String whiteImage, String realPostFee, String reservePrice,
-      String zkFinalPrice, Integer volume, Integer categoryId, String categoryName,
-      Integer levelOneCategoryId, String levelOneCategoryName) {
+      Integer id, Category category, MaterialCoupon matCoupon,
+      MaterialSeller matSeller, MaterialMkt matMkt, String xId, Long itemId,
+      String shortTitle, String title, String itemUrl, String itemDescription,
+      String provcity, String pictUrl, String smallImages, String whiteImage,
+      String realPostFee, String reservePrice, String zkFinalPrice, Integer volume,
+      Integer categoryId, String categoryName, Integer levelOneCategoryId,
+      String levelOneCategoryName) {
     this.id = id;
-    this.myCategoryId = myCategoryId;
-    this.mySellerId = mySellerId;
-    this.myCouponId = myCouponId;
-    this.myMktId = myMktId;
+    this.category = category;
+    MatCoupon = matCoupon;
+    MatSeller = matSeller;
+    MatMkt = matMkt;
     this.xId = xId;
     this.itemId = itemId;
     this.shortTitle = shortTitle;
@@ -73,36 +73,36 @@ public class Material {
     this.id = id;
   }
 
-  public Integer getMyCategoryId() {
-    return myCategoryId;
+  public Category getCategory() {
+    return category;
   }
 
-  public void setMyCategoryId(Integer myCategoryId) {
-    this.myCategoryId = myCategoryId;
+  public void setCategory(Category category) {
+    this.category = category;
   }
 
-  public Integer getMySellerId() {
-    return mySellerId;
+  public MaterialCoupon getMatCoupon() {
+    return MatCoupon;
   }
 
-  public void setMySellerId(Integer mySellerId) {
-    this.mySellerId = mySellerId;
+  public void setMatCoupon(MaterialCoupon matCoupon) {
+    MatCoupon = matCoupon;
   }
 
-  public Integer getMyCouponId() {
-    return myCouponId;
+  public MaterialSeller getMatSeller() {
+    return MatSeller;
   }
 
-  public void setMyCouponId(Integer myCouponId) {
-    this.myCouponId = myCouponId;
+  public void setMatSeller(MaterialSeller matSeller) {
+    MatSeller = matSeller;
   }
 
-  public Integer getMyMktId() {
-    return myMktId;
+  public MaterialMkt getMatMkt() {
+    return MatMkt;
   }
 
-  public void setMyMktId(Integer myMktId) {
-    this.myMktId = myMktId;
+  public void setMatMkt(MaterialMkt matMkt) {
+    MatMkt = matMkt;
   }
 
   public String getxId() {
@@ -253,10 +253,10 @@ public class Material {
   public String toString() {
     return "Material{" +
         "id=" + id +
-        ", myCategoryId=" + myCategoryId +
-        ", mySellerId=" + mySellerId +
-        ", myCouponId=" + myCouponId +
-        ", myMktId=" + myMktId +
+        ", category=" + category +
+        ", MatCoupon=" + MatCoupon +
+        ", MatSeller=" + MatSeller +
+        ", MatMkt=" + MatMkt +
         ", xId='" + xId + '\'' +
         ", itemId=" + itemId +
         ", shortTitle='" + shortTitle + '\'' +
