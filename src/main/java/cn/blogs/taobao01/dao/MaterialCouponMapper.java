@@ -8,4 +8,6 @@ import cn.blogs.taobao01.entity.MaterialCoupon;
  */
 public interface MaterialCouponMapper {
   public MaterialCoupon getMatCouponById( Integer id);
+  public MaterialCoupon getMatCouponByCouponId (String couponId);
+  public void addMatCoupon( MaterialCoupon materialCoupon);
 }

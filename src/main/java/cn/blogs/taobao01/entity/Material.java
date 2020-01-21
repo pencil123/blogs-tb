@@ -1,5 +1,7 @@
 package cn.blogs.taobao01.entity;
 
+import com.alibaba.fastjson.JSONObject;
+
 /**
  * @author lyzhang
  * @since 2020/1/19 14:03

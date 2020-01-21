@@ -8,4 +8,7 @@ import cn.blogs.taobao01.entity.MaterialSeller;
  */
 public interface MaterialSellerMapper {
   public MaterialSeller getMatSellerById (Integer id);
+  public MaterialSeller getMatSellerBySellerId(String sellerId);
+  public void addMatSeller(MaterialSeller materialSeller);
+
 }

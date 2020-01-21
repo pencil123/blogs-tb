@@ -7,7 +7,7 @@ package cn.blogs.taobao01.entity;
 public class MaterialCoupon {
   private Integer id;
   private String url;
-  private Integer tkTotalSales;
+  private String tkTotalSales;
   private String tkTotalCommi;
   private String couponId;
   private String couponInfo;
@@ -26,7 +26,7 @@ public class MaterialCoupon {
   }
 
   public MaterialCoupon(
-      Integer id, String url, Integer tkTotalSales, String tkTotalCommi, String couponId,
+      Integer id, String url, String tkTotalSales, String tkTotalCommi, String couponId,
       String couponInfo, String couponShareUrl, Integer couponTotalCount,
       Integer couponRemainCount, String couponStartFee, String couponAmount,
       String couponStartTime, String couponEndTime, String commissionRate,
@@ -64,11 +64,11 @@ public class MaterialCoupon {
     this.url = url;
   }
 
-  public Integer getTkTotalSales() {
+  public String getTkTotalSales() {
     return tkTotalSales;
   }
 
-  public void setTkTotalSales(Integer tkTotalSales) {
+  public void setTkTotalSales(String tkTotalSales) {
     this.tkTotalSales = tkTotalSales;
   }
 

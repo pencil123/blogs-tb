@@ -8,4 +8,6 @@ import cn.blogs.taobao01.entity.Material;
  */
 public interface MaterialMapper {
   public Material getMaterialById(Integer id);
+  public Material getMaterialByItemId(Long itemId);
+  public void addMaterial(Material material);
 }

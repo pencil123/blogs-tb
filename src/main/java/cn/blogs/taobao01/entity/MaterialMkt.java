@@ -6,6 +6,7 @@ package cn.blogs.taobao01.entity;
  */
 public class MaterialMkt {
   private Integer id;
+  private Long itemId;
   private String includeDxjh;
   private String infoDxjh;
   private String includeMkt;
@@ -21,10 +22,11 @@ public class MaterialMkt {
   }
 
   public MaterialMkt(
-      Integer id, String includeDxjh, String infoDxjh, String includeMkt,
+      Integer id, Long itemId, String includeDxjh, String infoDxjh, String includeMkt,
       String presaleDeposit, Integer presaleEndTime, Integer presaleStartTime,
       Integer presaleTailEndTime, Integer presaleTailStartTime) {
     this.id = id;
+    this.itemId = itemId;
     this.includeDxjh = includeDxjh;
     this.infoDxjh = infoDxjh;
     this.includeMkt = includeMkt;
@@ -41,6 +43,14 @@ public class MaterialMkt {
 
   public void setId(Integer id) {
     this.id = id;
+  }
+
+  public Long getItemId() {
+    return itemId;
+  }
+
+  public void setItemId(Long itemId) {
+    this.itemId = itemId;
   }
 
   public String getIncludeDxjh() {
@@ -111,6 +121,7 @@ public class MaterialMkt {
   public String toString() {
     return "MaterialMkt{" +
         "id=" + id +
+        ", itemId=" + itemId +
         ", includeDxjh='" + includeDxjh + '\'' +
         ", infoDxjh='" + infoDxjh + '\'' +
         ", includeMkt='" + includeMkt + '\'' +

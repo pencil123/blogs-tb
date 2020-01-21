@@ -14,6 +14,9 @@ import com.alibaba.fastjson.JSONObject;
 public class jsonToObject {
   public static Material toMaterial(JSONObject context) {
     Material material = new Material();
+    material.setMatCoupon(toMaterialCoupon(context));
+    material.setMatSeller(toMaterialSeller(context));
+    material.setMatMkt(toMaterialMkt(context));
     material.setxId((String)context.get("x_id"));
     material.setItemId((Long) context.get("item_id"));
     material.setTitle((String)context.get("title"));
@@ -21,7 +24,7 @@ public class jsonToObject {
     material.setItemDescription((String)context.get("item_description"));
     material.setProvcity((String)context.get("provcity"));
     material.setPictUrl((String) context.get("pict_url"));
-    material.setSmallImages((String) context.get("small_images"));
+    material.setSmallImages(context.containsKey("small_images")?(String)context.get("small_images").toString():JSONObject.parseObject("{}").toString());
     material.setWhiteImage((String)context.get("white_image"));
     material.setRealPostFee((String)context.get("real_post_fee"));
     material.setReservePrice((String)context.get("reserve_price"));
@@ -37,7 +40,7 @@ public class jsonToObject {
   public static MaterialCoupon toMaterialCoupon(JSONObject context){
     MaterialCoupon materialCoupon = new MaterialCoupon();
     materialCoupon.setUrl((String)context.get("pict_url"));
-    materialCoupon.setTkTotalSales((Integer) context.get("tk_total_sales"));
+    materialCoupon.setTkTotalSales((String) context.get("tk_total_sales"));
     materialCoupon.setTkTotalCommi((String)context.get("tk_total_commi"));
     materialCoupon.setCouponId((String)context.get("coupon_id"));
     materialCoupon.setCouponInfo((String)context.get("coupon_info"));
@@ -54,6 +57,7 @@ public class jsonToObject {
   }
   public static MaterialMkt toMaterialMkt(JSONObject context){
     MaterialMkt materialMkt = new MaterialMkt();
+    materialMkt.setItemId((Long) context.get("item_id"));
     materialMkt.setIncludeDxjh((String)context.get("include_dxjh"));
     materialMkt.setInfoDxjh((String)context.get("info_dxjh"));
     materialMkt.setIncludeMkt((String)context.get("include_mkt"));

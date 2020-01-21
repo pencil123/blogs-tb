@@ -12,6 +12,18 @@ resultType 返回值类型-->
     select * from material_coupon where id = #{id}
   </select>
 
+  <select id="getMatCouponByCouponId" resultType="cn.blogs.taobao01.entity.MaterialCoupon">
+    select * from material_coupon where coupon_id = #{couponId}
+  </select>
+
+  <insert id="addMatCoupon" parameterType="cn.blogs.taobao01.entity.MaterialCoupon" useGeneratedKeys="true" keyProperty="id">
+    insert into material_coupon (url,tk_total_sales,tk_total_commi,coupon_id,
+    coupon_info,coupon_share_url,coupon_total_count,coupon_remain_count,coupon_start_fee,
+    coupon_amount,coupon_start_time,coupon_end_time,commission_rate,commission_type)
+    values (#{url},#{tkTotalSales},#{tkTotalCommi},#{couponId},#{couponInfo},#{couponShareUrl},#{couponTotalCount},
+    #{couponRemainCount},#{couponStartFee},#{couponAmount},#{couponStartTime},#{couponEndTime},#{commissionRate},#{commissionType})
+  </insert>
+
   <!--  public void addEmp(Employee employee);
         useGeneratedKeys 获取自增主键
         keyproperty 指定对应主键属性

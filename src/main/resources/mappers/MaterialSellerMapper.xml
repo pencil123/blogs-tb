@@ -12,14 +12,17 @@ resultType 返回值类型-->
     select * from material_seller where id = #{id}
   </select>
 
-  <!--  public void addEmp(Employee employee);
-        useGeneratedKeys 获取自增主键
-        keyproperty 指定对应主键属性
-    -->
-<!--  <insert id="addEmp" parameterType="com.xuexi.mybatis02.entity.Employee" useGeneratedKeys="true" keyProperty="id">
-    insert into tbl_employee (last_name,gender,email) value (#{last_name},#{gender},#{email})
+  <select id="getMatSellerBySellerId" resultType="cn.blogs.taobao01.entity.MaterialSeller">
+    select * from material_seller where seller_id = #{sellerId}
+  </select>
+
+
+  <insert id="addMatSeller" parameterType="cn.blogs.taobao01.entity.MaterialSeller" useGeneratedKeys="true" keyProperty="id">
+    insert ignore into material_seller (user_type,nick,seller_id,shop_dsr,shop_title)
+    values (#{userType},#{nick},#{sellerId},#{shopDsr},#{shopTitle})
   </insert>
 
+<!--
   &lt;!&ndash;
     public void updateEmp(Employee employee);
     &ndash;&gt;

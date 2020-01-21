@@ -8,4 +8,6 @@ import cn.blogs.taobao01.entity.MaterialMkt;
  */
 public interface MaterialMktMapper {
   public MaterialMkt getMatMktById ( Integer id);
+  public MaterialMkt getMatMktByItemId(Long itemId);
+  public void addMatMkt(MaterialMkt materialMkt);
 }

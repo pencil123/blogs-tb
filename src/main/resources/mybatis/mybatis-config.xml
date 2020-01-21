@@ -7,6 +7,9 @@
     <setting name="mapUnderscoreToCamelCase" value="true"/>
     <setting name="logImpl" value="LOG4J"/>
   </settings>
+  <typeHandlers>
+    <typeHandler handler="com.alibaba.fastjson.JSONObject"/>
+  </typeHandlers>
 
   <plugins>
     <plugin interceptor="com.github.pagehelper.PageInterceptor">

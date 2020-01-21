@@ -44,6 +44,5 @@ class Taobao01ApplicationTests {
   public void test01() throws IOException {
     Material material = materialMapper.getMaterialById(22);
     System.out.println(material);
-    System.out.println(material.getMatCoupon());
   }
 }
