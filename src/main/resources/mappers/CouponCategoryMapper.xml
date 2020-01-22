@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--namespace 名称空间;指定为接口的全类名
+id 唯一标识符；设置接口的方法名
+resultType 返回值类型-->
+
+<mapper namespace="cn.blogs.taobao01.dao.CouponCategoryMapper">
+  <select id="getCouponCatById" resultType="cn.blogs.taobao01.entity.CouponCategory">
+    select * from coupon_category where id = #{id}
+  </select>
+</mapper>

@@ -1,6 +1,7 @@
 package cn.blogs.taobao01;
 
 import cn.blogs.taobao01.dao.CategoryMapper;
+import cn.blogs.taobao01.dao.CouponCategoryMapper;
 import cn.blogs.taobao01.dao.GuessLikeMapper;
 import cn.blogs.taobao01.dao.KeywordMapper;
 import cn.blogs.taobao01.dao.MaterialCouponMapper;
@@ -8,6 +9,7 @@ import cn.blogs.taobao01.dao.MaterialMapper;
 import cn.blogs.taobao01.dao.MaterialMktMapper;
 import cn.blogs.taobao01.dao.MaterialSellerMapper;
 import cn.blogs.taobao01.entity.Category;
+import cn.blogs.taobao01.entity.CouponCategory;
 import cn.blogs.taobao01.entity.GuessLike;
 import cn.blogs.taobao01.entity.Keyword;
 import cn.blogs.taobao01.entity.Material;
@@ -35,14 +37,13 @@ import org.springframework.test.context.junit4.SpringRunner;
 class Taobao01ApplicationTests {
 
   @Autowired
-  private MaterialMapper materialMapper;
-
+  private CouponCategoryMapper couponCategoryMapper;
   @Test
   void contextLoads() {}
 
   @Test
   public void test01() throws IOException {
-    Material material = materialMapper.getMaterialById(22);
-    System.out.println(material);
+    CouponCategory couponCategory = couponCategoryMapper.getCouponCatById(1);
+    System.out.println(couponCategory);
   }
 }
