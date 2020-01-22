@@ -28,15 +28,7 @@ import org.springframework.stereotype.Service;
  */
 @Service
 @PropertySource(value = {"classpath:config.properties"})
-public class MaterialService {
-  @Value("${taobao.appkey}")
-  private String appkey;
-  @Value("${taobao.secret}")
-  private String secret;
-  @Value("${taobao.url}")
-  private String url;
-  @Value("${taobao.AdzoneID}")
-  private Long adzoneid;
+public class MaterialService extends tbCommon{
 
   @Autowired
   private MaterialMapper materialMapper;
@@ -50,76 +42,90 @@ public class MaterialService {
   @Autowired
   private MaterialMktMapper materialMktMapper;
 
-  @Test
   public void test() {
-    System.out.println(materialMapper.getMaterialById(22));
-   search("女装");
+    searchAndInsertIndex("");
   }
 
-  public boolean search(String keyword) {
+  public boolean searchAndInsertIndex(String keyword){
+    for(int i =1;i<40;i++) {
+      if(!searchAndInsert(keyword,Long.valueOf(i))) {
+        break;
+      }
+    }
+    return true;
+  }
+
+  /**
+   * 物料搜索，并写入到数据库
+   * @param keyword 关键词
+   * @param pageNo 页码
+   * @return
+   */
+  private boolean searchAndInsert(String keyword,Long pageNo) {
+    Material material;
+    MaterialSeller materialSeller;
+    MaterialCoupon materialCoupon;
+    MaterialMkt materialMkt;
+    Material materialNew;
     TaobaoClient client = new DefaultTaobaoClient(url, appkey, secret);
     TbkDgMaterialOptionalRequest req = new TbkDgMaterialOptionalRequest();
     req.setQ(keyword);
-  //  req.setPageNo(1);
-    req.setIncludePayRate30(true);
-    //   req.setIncludeGoodRate(true);
-    //   req.setIncludeRfdRate(true);
-    req.setIsTmall(true);
+    req.setIncludePayRate30(true);//设置成交转化率高于行业平均值
+    req.setIncludeGoodRate(true); //设置好评率高于行业平均值
+    //req.setIncludeRfdRate(true); //设置退款率低于行业平均值
+    //req.setNpxLevel(2L); //设置商品没有牛皮癣
+    req.setNeedFreeShipment(true);//设置商品包邮
+    req.setIsTmall(true); //设置为天猫的商品
+    req.setNeedPrepay(true);//设置商家加入消费者保障
     req.setSort("total_sales");
-    req.setIsTmall(true);
-    req.setHasCoupon(true);
-    req.setPageSize(100L);
+    req.setHasCoupon(true); //设置物料有优惠券
+    req.setPageSize(50L);  //每页多少个
+    req.setPageNo(pageNo); //设置页面
     req.setAdzoneId(adzoneid);
- //   LinkedList<Material> materials =  new LinkedList<>();
     try {
       TbkDgMaterialOptionalResponse rsp = client.execute(req);
       JSONObject jsonObject = JSONObject.parseObject(rsp.getBody());
       JSONObject result_list = jsonObject.getJSONObject("tbk_dg_material_optional_response");
       if (result_list == null) {
-  //      logger.info("search# 关键词:{},页面:{} result is null",keyword,pagenum);
         return false;
       }
       JSONObject map_data = result_list.getJSONObject("result_list");
       JSONArray infos = map_data.getJSONArray("map_data");
-     System.out.println(infos.toString());
       for(int i = 0 ;i < infos.size(); i++) {
-        Material material = jsonToObject.toMaterial((infos.getJSONObject(i)));
-        MaterialSeller materialSeller = materialSellerMapper.getMatSellerBySellerId(material.getMatSeller().getSellerId());
+        material = jsonToObject.toMaterial((infos.getJSONObject(i)));
+        materialSeller = materialSellerMapper.getMatSellerBySellerId(material.getMatSeller().getSellerId());
         if (materialSeller == null) {
           materialSellerMapper.addMatSeller(material.getMatSeller());
         }else {
           material.setMatSeller(materialSeller);
         }
-        System.out.println(material.getMatSeller());
+        //System.out.println(material.getMatSeller());
 
-        MaterialCoupon materialCoupon = materialCouponMapper.getMatCouponByCouponId(material.getMatCoupon().getCouponId());
+        materialCoupon = materialCouponMapper.getMatCouponByCouponId(material.getMatCoupon().getCouponId());
         if (materialCoupon == null) {
           materialCouponMapper.addMatCoupon(material.getMatCoupon());
         }else {
           material.setMatCoupon(materialCoupon);
         }
-        System.out.println(material.getMatCoupon());
+        //System.out.println(material.getMatCoupon());
 
-        MaterialMkt materialMkt = materialMktMapper.getMatMktByItemId(material.getMatMkt().getItemId());
+        materialMkt = materialMktMapper.getMatMktByItemId(material.getMatMkt().getItemId());
         if(materialMkt == null) {
           materialMktMapper.addMatMkt(material.getMatMkt());
         }else{
           material.setMatMkt(materialMkt);
         }
-        System.out.println(material.getMatMkt());
+        //System.out.println(material.getMatMkt());
 
-        Material materialNew = materialMapper.getMaterialByItemId(material.getItemId());
+        materialNew = materialMapper.getMaterialByItemId(material.getItemId());
         if(materialNew == null){
           materialMapper.addMaterial(material);
         }
 
       }
-   //   logger.info("search# 关键词:{},页面:{} result size is {};",keyword,pagenum,infos.size());
-
     } catch (ApiException e) {
       e.printStackTrace();
     }
-//    materialDao.insertMegs(materials);
     return true;
   }
 }

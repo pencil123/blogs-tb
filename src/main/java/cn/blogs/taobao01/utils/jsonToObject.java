@@ -1,6 +1,7 @@
 package cn.blogs.taobao01.utils;
 
 import cn.blogs.taobao01.entity.Material;
+import cn.blogs.taobao01.entity.MaterialBeat;
 import cn.blogs.taobao01.entity.MaterialCoupon;
 import cn.blogs.taobao01.entity.MaterialMkt;
 import cn.blogs.taobao01.entity.MaterialSeller;
@@ -37,7 +38,7 @@ public class jsonToObject {
     return material;
   }
 
-  public static MaterialCoupon toMaterialCoupon(JSONObject context){
+  private static MaterialCoupon toMaterialCoupon(JSONObject context){
     MaterialCoupon materialCoupon = new MaterialCoupon();
     materialCoupon.setUrl((String)context.get("pict_url"));
     materialCoupon.setTkTotalSales((String) context.get("tk_total_sales"));
@@ -55,7 +56,7 @@ public class jsonToObject {
     materialCoupon.setCommissionType((String)context.get("commission_type"));
     return materialCoupon;
   }
-  public static MaterialMkt toMaterialMkt(JSONObject context){
+  private static MaterialMkt toMaterialMkt(JSONObject context){
     MaterialMkt materialMkt = new MaterialMkt();
     materialMkt.setItemId((Long) context.get("item_id"));
     materialMkt.setIncludeDxjh((String)context.get("include_dxjh"));
@@ -68,7 +69,7 @@ public class jsonToObject {
     materialMkt.setPresaleTailStartTime((Integer) (context.get("presale_tail_start_time") instanceof  Long ?((Long) context.get("presale_tail_start_time")).intValue():context.get("presale_tail_start_time")));
     return materialMkt;
   }
-  public static MaterialSeller toMaterialSeller(JSONObject context){
+  private static MaterialSeller toMaterialSeller(JSONObject context){
     MaterialSeller materialSeller = new MaterialSeller();
     materialSeller.setNick((String)context.get("nick"));
     materialSeller.setUserType((Integer)context.get("user_type"));
@@ -76,5 +77,23 @@ public class jsonToObject {
     materialSeller.setShopDsr((Integer)context.get("shop_dsr"));
     materialSeller.setShopTitle((String)context.get("shop_title"));
     return materialSeller;
+  }
+
+  public static MaterialBeat toMaterialBeat (JSONObject context) {
+    MaterialBeat materialBeat = new MaterialBeat();
+    materialBeat.setItemId((Long) context.get("item_id"));
+    materialBeat.setTitle((String)context.get("title"));
+    materialBeat.setItemDescription((String)context.get("item_description"));
+    materialBeat.setPictUrl((String) context.get("pict_url"));
+    materialBeat.setCouponAmount((Integer) context.get("coupon_amount"));
+    materialBeat.setCouponTotalCount((Integer) context.get("coupon_total_count"));
+    materialBeat.setCouponStartFee((String)context.get("coupon_start_fee"));
+    materialBeat.setCouponShareUrl((String)context.get("coupon_share_url"));
+    materialBeat.setCouponClickUrl((String) context.get("coupon_click_url"));
+    materialBeat.setClickUrl((String) context.get("click_url"));
+    materialBeat.setCommissionRate((String)context.get("commission_rate"));
+    materialBeat.setVolume((Integer) context.get("volume"));
+    materialBeat.setZkFinalPrice((String)context.get("zk_final_price"));
+    return materialBeat;
   }
 }

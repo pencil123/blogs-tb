@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--namespace 名称空间;指定为接口的全类名
+id 唯一标识符；设置接口的方法名
+resultType 返回值类型-->
+
+<mapper namespace="cn.blogs.taobao01.dao.MaterialBeatMapper">
+  <select id="getMatBeatById" resultType="cn.blogs.taobao01.entity.MaterialBeat">
+    select * from material_beat where id = #{id}
+  </select>
+
+  <select id="getMatBeatByItemId" resultType="cn.blogs.taobao01.entity.MaterialBeat">
+    select * from material_beat where item_id = #{itemId}
+  </select>
+
+  <insert id="addMatBeat" parameterType="cn.blogs.taobao01.entity.MaterialBeat" useGeneratedKeys="true" keyProperty="id">
+    insert into material_beat (material_id,item_id,title,item_description,pict_url,coupon_amount,coupon_total_count,
+    coupon_start_fee,coupon_share_url,coupon_click_url,click_url,commission_rate,volume,zk_final_price)
+    values (#{materialId},#{itemId},#{title},#{itemDescription},#{pictUrl},#{couponAmount},#{couponTotalCount},
+    #{couponStartFee},#{couponShareUrl},#{couponClickUrl},#{clickUrl},#{commissionRate},#{volume},#{zkFinalPrice})
+  </insert>
+</mapper>
