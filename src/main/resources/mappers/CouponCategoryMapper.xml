@@ -11,4 +11,12 @@ resultType 返回值类型-->
   <select id="getCouponCatById" resultType="cn.blogs.taobao01.entity.CouponCategory">
     select * from coupon_category where id = #{id}
   </select>
+
+  <select id="getCouponCatByMatId" resultType="cn.blogs.taobao01.entity.CouponCategory">
+    select * from coupon_category where material_id = #{materialId}
+  </select>
+
+  <select id="getCouponCatAll" resultType="cn.blogs.taobao01.entity.CouponCategory">
+    select * from coupon_category
+  </select>
 </mapper>

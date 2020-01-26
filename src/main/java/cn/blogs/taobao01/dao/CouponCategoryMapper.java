@@ -1,6 +1,7 @@
 package cn.blogs.taobao01.dao;
 
 import cn.blogs.taobao01.entity.CouponCategory;
+import java.util.List;
 
 /**
  * @author lyzhang
@@ -8,5 +9,6 @@ import cn.blogs.taobao01.entity.CouponCategory;
  */
 public interface CouponCategoryMapper {
   public CouponCategory getCouponCatById(Integer id);
-
+  public CouponCategory getCouponCatByMatId(Integer materialId);
+  public List<CouponCategory> getCouponCatAll();
 }

@@ -17,6 +17,8 @@ import cn.blogs.taobao01.entity.MaterialCoupon;
 import cn.blogs.taobao01.entity.MaterialMkt;
 import cn.blogs.taobao01.entity.MaterialSeller;
 import java.io.IOException;
+import java.util.List;
+import java.util.zip.CheckedOutputStream;
 import org.apache.ibatis.annotations.Mapper;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
@@ -43,7 +45,9 @@ class Taobao01ApplicationTests {
 
   @Test
   public void test01() throws IOException {
-    CouponCategory couponCategory = couponCategoryMapper.getCouponCatById(1);
-    System.out.println(couponCategory);
+    List<CouponCategory> couponCategorys = couponCategoryMapper.getCouponCatAll();
+    for(CouponCategory coupon : couponCategorys) {
+      System.out.println(coupon);
+    }
   }
 }
