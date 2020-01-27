@@ -20,6 +20,7 @@ public class MaterialBeat {
   private String commissionRate;
   private Integer volume;
   private String zkFinalPrice;
+  private String finalPrice;
 
   public MaterialBeat() {
     super();
@@ -29,7 +30,7 @@ public class MaterialBeat {
       Integer id, Integer materialId, Long itemId, String title, String itemDescription,
       String pictUrl, Integer couponAmount, Integer couponTotalCount, String couponStartFee,
       String couponShareUrl, String couponClickUrl, String clickUrl, String commissionRate,
-      Integer volume, String zkFinalPrice) {
+      Integer volume, String zkFinalPrice, String finalPrice) {
     this.id = id;
     this.materialId = materialId;
     this.itemId = itemId;
@@ -167,6 +168,14 @@ public class MaterialBeat {
     this.zkFinalPrice = zkFinalPrice;
   }
 
+  public String getFinalPrice() {
+    return finalPrice;
+  }
+
+  public void setFinalPrice(String finalPrice) {
+    this.finalPrice = finalPrice;
+  }
+
   @Override
   public String toString() {
     return "MaterialBeat{" +
@@ -185,6 +194,7 @@ public class MaterialBeat {
         ", commissionRate='" + commissionRate + '\'' +
         ", volume=" + volume +
         ", zkFinalPrice='" + zkFinalPrice + '\'' +
+        ", finalPrice='" + finalPrice + '\'' +
         '}';
   }
 }

@@ -31,9 +31,9 @@ resultType 返回值类型-->
   <insert id="addMaterial" parameterType="cn.blogs.taobao01.entity.Material" useGeneratedKeys="true" keyProperty="id">
     insert into material_new(my_category_id,my_seller_id,my_coupon_id,my_mkt_id,x_id,item_id,short_title,title,
     item_url,item_description,provcity,pict_url,small_images,white_image,real_post_fee,reserve_price,
-    zk_final_price,volume,category_id,category_name,level_one_category_id,level_one_category_name)
+    zk_final_price,final_price,volume,category_id,category_name,level_one_category_id,level_one_category_name)
     values (#{category.id},#{MatSeller.id},#{MatCoupon.id},#{MatMkt.id},#{xId},#{itemId},#{shortTitle},#{title},#{itemUrl},#{itemDescription},
-    #{provcity},#{pictUrl},#{smallImages},#{whiteImage},#{realPostFee},#{reservePrice},#{zkFinalPrice},#{volume},#{categoryId},#{categoryName},#{levelOneCategoryId},#{levelOneCategoryName})
+    #{provcity},#{pictUrl},#{smallImages},#{whiteImage},#{realPostFee},#{reservePrice},#{zkFinalPrice},#{finalPrice},#{volume},#{categoryId},#{categoryName},#{levelOneCategoryId},#{levelOneCategoryName})
   </insert>
 
 

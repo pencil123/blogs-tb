@@ -16,6 +16,7 @@ import com.taobao.api.DefaultTaobaoClient;
 import com.taobao.api.TaobaoClient;
 import com.taobao.api.request.TbkDgMaterialOptionalRequest;
 import com.taobao.api.response.TbkDgMaterialOptionalResponse;
+import java.math.BigDecimal;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -65,6 +66,7 @@ public class MaterialService extends tbCommon{
     Material material;
     MaterialSeller materialSeller;
     MaterialCoupon materialCoupon;
+    BigDecimal finalPrice;
     MaterialMkt materialMkt;
     Material materialNew;
     TaobaoClient client = new DefaultTaobaoClient(url, appkey, secret);
@@ -119,6 +121,8 @@ public class MaterialService extends tbCommon{
 
         materialNew = materialMapper.getMaterialByItemId(material.getItemId());
         if(materialNew == null){
+          finalPrice = new BigDecimal(material.getZkFinalPrice()).subtract(new BigDecimal(material.getMatCoupon().getCouponAmount()));
+          material.setFinalPrice(finalPrice.toString());
           materialMapper.addMaterial(material);
         }
 

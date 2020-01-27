@@ -10,6 +10,7 @@ import com.taobao.api.DefaultTaobaoClient;
 import com.taobao.api.TaobaoClient;
 import com.taobao.api.request.TbkDgOptimusMaterialRequest;
 import com.taobao.api.response.TbkDgOptimusMaterialResponse;
+import java.math.BigDecimal;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -33,6 +34,7 @@ public class MaterialBeatService extends tbCommon{
   private boolean searchAndInsert(Long materialId,Long pageNo){
     MaterialBeat materialBeat;
     MaterialBeat materialBeat1;
+    BigDecimal finalPrice;
     TaobaoClient client = new DefaultTaobaoClient(url,appkey,secret);
     TbkDgOptimusMaterialRequest req = new TbkDgOptimusMaterialRequest();
     req.setAdzoneId(adzoneid);
@@ -50,9 +52,11 @@ public class MaterialBeatService extends tbCommon{
       JSONArray infos = mapData.getJSONArray("map_data");
       for(int i =0; i< infos.size();i++){
         materialBeat = jsonToObject.toMaterialBeat(infos.getJSONObject(i));
-        materialBeat.setMaterialId(materialId.intValue());
         materialBeat1 = materialBeatMapper.getMatBeatByItemId(materialBeat.getItemId());
         if(materialBeat1 == null) {
+          finalPrice = new BigDecimal(materialBeat.getZkFinalPrice()).subtract(new BigDecimal(materialBeat.getCouponAmount()));
+          materialBeat.setFinalPrice(finalPrice.toString());
+          materialBeat.setMaterialId(materialId.intValue());
           materialBeatMapper.addMatBeat(materialBeat);
         }
       }

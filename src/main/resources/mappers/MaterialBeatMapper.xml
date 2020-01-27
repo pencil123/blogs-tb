@@ -18,8 +18,8 @@ resultType 返回值类型-->
 
   <insert id="addMatBeat" parameterType="cn.blogs.taobao01.entity.MaterialBeat" useGeneratedKeys="true" keyProperty="id">
     insert into material_beat (material_id,item_id,title,item_description,pict_url,coupon_amount,coupon_total_count,
-    coupon_start_fee,coupon_share_url,coupon_click_url,click_url,commission_rate,volume,zk_final_price)
+    coupon_start_fee,coupon_share_url,coupon_click_url,click_url,commission_rate,volume,zk_final_price,final_price)
     values (#{materialId},#{itemId},#{title},#{itemDescription},#{pictUrl},#{couponAmount},#{couponTotalCount},
-    #{couponStartFee},#{couponShareUrl},#{couponClickUrl},#{clickUrl},#{commissionRate},#{volume},#{zkFinalPrice})
+    #{couponStartFee},#{couponShareUrl},#{couponClickUrl},#{clickUrl},#{commissionRate},#{volume},#{zkFinalPrice},#{finalPrice})
   </insert>
 </mapper>

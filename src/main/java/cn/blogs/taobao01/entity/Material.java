@@ -25,6 +25,7 @@ public class Material {
   private String realPostFee;
   private String reservePrice;
   private String zkFinalPrice;
+  private String finalPrice;
   private Integer volume;
   private Integer categoryId;
   private String categoryName;
@@ -39,7 +40,7 @@ public class Material {
       MaterialSeller matSeller, MaterialMkt matMkt, String xId, Long itemId,
       String shortTitle, String title, String itemUrl, String itemDescription,
       String provcity, String pictUrl, String smallImages, String whiteImage,
-      String realPostFee, String reservePrice, String zkFinalPrice, Integer volume,
+      String realPostFee, String reservePrice, String zkFinalPrice,String finalPrice, Integer volume,
       Integer categoryId, String categoryName, Integer levelOneCategoryId,
       String levelOneCategoryName) {
     this.id = id;
@@ -60,6 +61,7 @@ public class Material {
     this.realPostFee = realPostFee;
     this.reservePrice = reservePrice;
     this.zkFinalPrice = zkFinalPrice;
+    this.finalPrice = finalPrice;
     this.volume = volume;
     this.categoryId = categoryId;
     this.categoryName = categoryName;
@@ -211,6 +213,14 @@ public class Material {
     this.zkFinalPrice = zkFinalPrice;
   }
 
+  public String getFinalPrice() {
+    return finalPrice;
+  }
+
+  public void setFinalPrice(String finalPrice) {
+    this.finalPrice = finalPrice;
+  }
+
   public Integer getVolume() {
     return volume;
   }
@@ -272,6 +282,7 @@ public class Material {
         ", realPostFee='" + realPostFee + '\'' +
         ", reservePrice='" + reservePrice + '\'' +
         ", zkFinalPrice='" + zkFinalPrice + '\'' +
+        ", finalPrice='" + finalPrice + '\'' +
         ", volume=" + volume +
         ", categoryId=" + categoryId +
         ", categoryName='" + categoryName + '\'' +

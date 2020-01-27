@@ -16,6 +16,7 @@ import cn.blogs.taobao01.entity.Material;
 import cn.blogs.taobao01.entity.MaterialCoupon;
 import cn.blogs.taobao01.entity.MaterialMkt;
 import cn.blogs.taobao01.entity.MaterialSeller;
+import cn.blogs.taobao01.service.tk.MaterialBeatService;
 import java.io.IOException;
 import java.util.List;
 import java.util.zip.CheckedOutputStream;
@@ -40,6 +41,8 @@ class Taobao01ApplicationTests {
 
   @Autowired
   private CouponCategoryMapper couponCategoryMapper;
+  @Autowired
+  private MaterialBeatService materialBeatService;
   @Test
   void contextLoads() {}
 
@@ -48,6 +51,7 @@ class Taobao01ApplicationTests {
     List<CouponCategory> couponCategorys = couponCategoryMapper.getCouponCatAll();
     for(CouponCategory coupon : couponCategorys) {
       System.out.println(coupon);
+      materialBeatService.searchAndInsertIndex(Long.valueOf(coupon.getMaterialId()));
     }
   }
 }
